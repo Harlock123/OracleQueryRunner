@@ -1,0 +1,17 @@
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+
+# Docker volumes and logs
+.docker/
+docker-compose.override.yml
+docker-postgres/.env
+docker-mysql/.env
+docker-db2/.env
+
+# Database backup files
+*.sql.backup
+*.dump
+backup.sql

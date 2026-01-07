@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  db2:
+    image: icr.io/db2_community/db2:11.5.9.0
+    container_name: lawgrid-db2-db
+    privileged: true
+    ports:
+      - "50000:50000"
+    environment:
+      - LICENSE=accept
+      - DB2INSTANCE=db2inst1
+      - DB2INST1_PASSWORD=TestPassword123
+      - DBNAME=lawgrid
+      - ARCHIVE_LOGS=false
+      - AUTOCONFIG=false
+    volumes:
+      - db2-data:/database
+      - ./init-scripts:/var/custom
+    healthcheck:
+      test: ["CMD", "su", "-", "db2inst1", "-c", "db2 connect to lawgrid"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+
+volumes:
+  db2-data:
+    driver: local
