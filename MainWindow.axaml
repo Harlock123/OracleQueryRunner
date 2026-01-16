@@ -3,6 +3,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:lawgrid="clr-namespace:LAWgrid;assembly=LAWgrid"
+        xmlns:sc="clr-namespace:SyntaxColorizer.Controls;assembly=SyntaxColorizer"
+        xmlns:themes="clr-namespace:SyntaxColorizer.Themes;assembly=SyntaxColorizer"
+        xmlns:syntax="clr-namespace:SyntaxColorizer;assembly=SyntaxColorizer"
         mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="700"
         x:Class="OracleQueryRunner.MainWindow"
         Title="Oracle Query Runner"
@@ -120,13 +123,12 @@
                    FontWeight="Bold"
                    Margin="0,0,0,5"/>
 
-        <!-- Query TextBox -->
-        <TextBox Grid.Row="2"
-                 Name="QueryTextBox"
-                 AcceptsReturn="True"
-                 TextWrapping="Wrap"
-                 Watermark="Enter your Oracle SQL query here..."
-                 FontFamily="Consolas, Menlo, Monaco, monospace"/>
+        <!-- Query TextBox with Syntax Highlighting -->
+        <sc:SyntaxHighlightingTextBox Grid.Row="2"
+                                      Name="QueryTextBox"
+                                      Language="{x:Static syntax:SyntaxLanguage.OracleSql}"
+                                      SyntaxTheme="{x:Static themes:BuiltInThemes.VisualStudioDark}"
+                                      ShowLineNumbers="True"/>
 
         <!-- Buttons Section -->
         <StackPanel Grid.Row="3"
