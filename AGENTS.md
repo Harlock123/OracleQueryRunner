@@ -43,8 +43,7 @@ The whole app is a single project at the repository root.
   changing the XAML, that array and that switch together.
 - **Keep JSON source-generated.** New settings types need a `[JsonSerializable]` entry on `AppJsonContext`.
 - **Database work stays off the UI thread** (async grid call, `Task.Run` for the table list).
-- The README is older than the code: it describes typing a connection string and a `LAWgrid/` folder, neither of
-  which exists now. Update it with any change to how connections work.
+- Update the README with any change to how connections work; its Usage section describes the presets.
 
 ## Making a change
 
